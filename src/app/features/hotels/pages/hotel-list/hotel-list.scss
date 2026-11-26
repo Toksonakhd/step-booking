@@ -1,0 +1,101 @@
+.hero {
+  background: linear-gradient(to bottom, #fafbfc, #f5f7f9);
+  text-align: center;
+  padding: 20px 20px 64px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #17253b;
+  margin: 0 0 24px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: #475569;
+  margin: 0 0 32px;
+}
+
+.search-box {
+  display: flex;
+  max-width: 550px;
+  margin: auto;
+  padding: 4px;
+  border: 1px solid #dce4ef;
+  border-radius: 8px;
+  background: #f5f7fa;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #17253b;
+}
+
+.search-box input::placeholder {
+  color: #94a3b8;
+}
+
+.search-box button {
+  background: #0066ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #0055db;
+}
+
+.hotels-section {
+  max-width: 1240px;
+  margin: auto;
+  padding: 48px 20px 80px;
+}
+
+.section-heading {
+  margin-bottom: 32px;
+}
+
+.section-heading h2 {
+  font-size: 26px;
+  color: #17253b;
+  margin: 0;
+}
+
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.message {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .hotels-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .hotels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}

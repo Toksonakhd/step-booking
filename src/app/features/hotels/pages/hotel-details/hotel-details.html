@@ -1,0 +1,96 @@
+<div class="details-container">
+  @if (loading()) {
+    <p class="message">Loading hotel details...</p>
+  }
+
+  @if (error()) {
+    <p class="message">{{ error() }}</p>
+  }
+
+  @if (hotel(); as h) {
+    <section class="gallery">
+      <div class="main-image">
+        <img [src]="selectedImage()" [alt]="h.name">
+      </div>
+
+      <div class="thumbnails">
+        @for (image of h.gallery; track image) {
+          <button
+            type="button"
+            [class.selected]="selectedImage() === image"
+            (click)="changeImage(image)"
+          >
+            <img [src]="image" [alt]="h.name">
+          </button>
+        }
+      </div>
+    </section>
+
+    <section class="hotel-information">
+      <div class="hotel-description">
+        <span class="hotel-badge">
+          {{ h.starRating }} ★ Hotel
+        </span>
+
+        <h1>{{ h.name }}</h1>
+
+        <p class="address">
+          {{ h.address.city }},
+          {{ h.address.country }},
+          {{ h.address.state }},
+          {{ h.address.street }},
+          {{ h.address.zipCode }}
+        </p>
+
+        <div class="hotel-stats">
+          <div class="rating">
+            @for (star of stars; track star) {
+              <span [class.active]="star <= h.averageRating">★</span>
+            }
+
+            <strong>{{ h.averageRating }}</strong>
+            <small>({{ h.reviewCount }} reviews)</small>
+          </div>
+
+          <div class="room-count">
+            <strong>{{ h.roomCount }}</strong> rooms
+          </div>
+        </div>
+
+        <p class="description">
+          {{ h.description }}
+        </p>
+      </div>
+
+      <aside class="contact">
+        <h3>Contact</h3>
+
+        <a [href]="'tel:' + h.phoneNumber">
+          📞 {{ h.phoneNumber }}
+        </a>
+
+        <a [href]="'mailto:' + h.email">
+          ✉️ {{ h.email }}
+        </a>
+      </aside>
+    </section>
+
+    <section class="rooms-section">
+      <div class="section-tabs">
+        <span class="active-tab">
+          Rooms ({{ rooms().length }})
+        </span>
+      </div>
+
+      <div class="rooms-grid">
+        @for (room of rooms(); track room.id) {
+          <app-room-card [room]="room"></app-room-card>
+        }
+      </div>
+
+      @if (rooms().length === 0) {
+        <p class="message">No rooms found.</p>
+      }
+    </section>
+  }
+</div>

@@ -1,0 +1,34 @@
+<div class="room-card">
+  <div class="image-container">
+    <img [src]="room().thumbnail" [alt]="room().roomType">
+
+    <span class="availability" [class.unavailable]="!room().isAvailable">
+      {{ room().isAvailable ? 'Available' : 'Unavailable' }}
+    </span>
+  </div>
+
+  <div class="card-content">
+    <div class="room-heading">
+      <h3>{{ room().roomType }}</h3>
+      <span>{{ room().roomNumber }}</span>
+    </div>
+
+    <div class="room-info">
+      <span>{{ room().capacity }} Guests</span>
+      <span>{{ room().bedCount }} Beds</span>
+    </div>
+
+    <div class="rating">
+      @for (star of stars; track star) {
+        <span [class.active]="star <= room().averageRating">★</span>
+      }
+
+      <small>({{ room().reviewCount }})</small>
+    </div>
+
+    <div class="card-bottom">
+      <strong>{{ room().pricePerNight }}</strong>
+      <span>/ night</span>
+    </div>
+  </div>
+</div>

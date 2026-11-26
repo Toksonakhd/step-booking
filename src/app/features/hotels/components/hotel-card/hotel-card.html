@@ -1,0 +1,27 @@
+<a class="hotel-card" [routerLink]="['/hotel', hotel().id]">
+  <div class="image-container">
+    <img [src]="hotel().thumbnail" [alt]="hotel().name">
+
+    <span class="star-badge">
+      {{ hotel().starRating }} ★
+    </span>
+  </div>
+
+  <div class="card-content">
+    <h3>{{ hotel().name }}</h3>
+
+    <div class="card-bottom">
+      <div class="rating">
+        @for (star of stars; track star) {
+          <span [class.active]="star <= hotel().averageRating">★</span>
+        }
+
+        <small>({{ hotel().reviewCount }})</small>
+      </div>
+
+      <span class="room-count">
+        {{ hotel().roomCount }} rooms
+      </span>
+    </div>
+  </div>
+</a>

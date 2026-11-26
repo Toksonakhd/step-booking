@@ -1,0 +1,40 @@
+<section class="hero">
+  <h1>Find your perfect stay</h1>
+  <p>Discover and book hotels worldwide with ease</p>
+
+  <form class="search-box" (ngSubmit)="searchHotels()">
+    <input
+      type="text"
+      placeholder="Search hotels by name..."
+      name="search"
+      [ngModel]="search()"
+      (ngModelChange)="search.set($event)"
+    >
+
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<section class="hotels-section">
+  <div class="section-heading">
+    <h2>Explore Hotels</h2>
+  </div>
+
+  @if (loading()) {
+    <p class="message">Loading hotels...</p>
+  }
+
+  @if (error()) {
+    <p class="message">{{ error() }}</p>
+  }
+
+  <div class="hotels-grid">
+    @for (hotel of filteredHotels(); track hotel.id) {
+      <app-hotel-card [hotel]="hotel"></app-hotel-card>
+    }
+  </div>
+
+  @if (!loading() && !error() && filteredHotels().length === 0) {
+    <p class="message">No hotels found.</p>
+  }
+</section>

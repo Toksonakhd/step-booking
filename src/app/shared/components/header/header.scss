@@ -1,0 +1,50 @@
+header {
+  background: white;
+  border-bottom: 1px solid #dce4ef;
+}
+
+.header-container {
+  max-width: 1240px;
+  height: 65px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #17253b;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: #0066ff;
+  color: white;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  background: #0066ff;
+  color: white;
+  border: 4px solid white;
+  outline: 1px solid #dce4ef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
